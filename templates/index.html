@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith Journey.</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-church"></i> Faith Journey.</h1>
+            <p>Your spiritual growth companion</p>
+        </header>
+
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="quiet-time">Daily Quiet Time</button>
+                <button class="tab-btn" data-tab="books">Book Recommendations</button>
+                <button class="tab-btn" data-tab="bible-study">Bible Study</button>
+                <button class="tab-btn" data-tab="questions">Ask a Question</button>
+            </div>
+
+            <div class="tab-content">
+                <!-- Quiet Time Tab -->
+                <div class="tab-pane active" id="quiet-time">
+                    <h2>Daily Quiet Time Plan</h2>
+                    <div class="form-group">
+                        <label for="duration">Duration (minutes):</label>
+                        <input type="number" id="duration" min="5" max="60" value="15">
+                    </div>
+                    <div class="form-group">
+                        <label for="focus-area">Focus Area (optional):</label>
+                        <input type="text" id="focus-area" placeholder="e.g., prayer, gratitude, trust">
+                    </div>
+                    <button class="submit-btn" id="quiet-time-btn">Generate Plan</button>
+                </div>
+
+                <!-- Book Recommendations Tab -->
+                <div class="tab-pane" id="books">
+                    <h2>Christian Book Recommendations</h2>
+                    <div class="form-group">
+                        <label for="book-topic">Topic (optional):</label>
+                        <input type="text" id="book-topic" placeholder="e.g., prayer, discipleship, evangelism">
+                    </div>
+                    <div class="form-group">
+                        <label for="spiritual-level">Spiritual Maturity:</label>
+                        <select id="spiritual-level">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-count">Number of Recommendations:</label>
+                        <input type="number" id="book-count" min="1" max="5" value="3">
+                    </div>
+                    <button class="submit-btn" id="books-btn">Get Recommendations</button>
+                </div>
+
+                <!-- Bible Study Tab -->
+                <div class="tab-pane" id="bible-study">
+                    <h2>Bible Study Guide</h2>
+                    <div class="form-group">
+                        <label for="passage">Bible Passage:</label>
+                        <input type="text" id="passage" placeholder="e.g., John 3:16-21, Psalm 23">
+                    </div>
+                    <button class="submit-btn" id="bible-study-btn">Create Study Guide</button>
+                </div>
+
+                <!-- Questions Tab -->
+                <div class="tab-pane" id="questions">
+                    <h2>Ask a Faith Question</h2>
+                    <div class="form-group">
+                        <label for="question">Your Question:</label>
+                        <textarea id="question" placeholder="e.g., What does the Bible say about forgiveness?"></textarea>
+                    </div>
+                    <button class="submit-btn" id="question-btn">Get Answer</button>
+                </div>
+            </div>
+
+            <!-- Response Container -->
+            <div class="response-container" id="response-container">
+                <div class="response-header">
+                    <h3>Your Response</h3>
+                    <button id="copy-btn" title="Copy to clipboard"><i class="fas fa-copy"></i></button>
+                </div>
+                <div class="response-content" id="response-content">
+                    <div class="welcome-message">
+                        <i class="fas fa-pray fa-3x"></i>
+                        <h3>Welcome to your Church AI Assistant</h3>
+                        <p>Select a feature above to get started on your spiritual journey.</p>
+                        <p>I'm here to help with quiet time plans, book recommendations, Bible studies, and answering your questions about faith.</p>
+                    </div>
+                </div>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Praying for wisdom...</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Church AI Assistant | Powered by faith and technology</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
