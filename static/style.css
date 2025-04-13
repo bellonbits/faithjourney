@@ -168,16 +168,17 @@ textarea {
     color: var(--primary-color);
 }
 
-#copy-btn {
+#copy-btn, #speak-response-btn {
     background: none;
     border: none;
     color: var(--light-text);
     cursor: pointer;
     font-size: 1.2rem;
     transition: color 0.3s;
+    margin-left: 10px;
 }
 
-#copy-btn:hover {
+#copy-btn:hover, #speak-response-btn:hover {
     color: var(--primary-color);
 }
 
@@ -256,5 +257,277 @@ footer {
     .tab-btn {
         text-align: left;
         padding: 15px;
+    }
+}
+
+/* Personal Journal Styles */
+.mood-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.mood-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    background-color: #f9f9f9;
+    width: calc(33.333% - 10px);
+}
+
+.mood-option:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-3px);
+}
+
+.mood-option.selected {
+    border-color: var(--primary-color);
+    background-color: var(--primary-light);
+}
+
+.mood-option i {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.mood-option span {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.journal-entries {
+    margin-top: 30px;
+}
+
+.journal-entry {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.journal-entry:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.journal-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.journal-entry-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.journal-entry-date {
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+.journal-entry-mood {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.journal-entry-mood i {
+    color: var(--primary-color);
+}
+
+.journal-entry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.journal-tag {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.journal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.journal-action-btn {
+    background: none;
+    border: none;
+    color: var(--light-text);
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.journal-action-btn:hover {
+    color: var(--primary-color);
+}
+
+.journal-action-btn i {
+    margin-right: 5px;
+}
+
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.filter-control {
+    flex: 1;
+    min-width: 150px;
+}
+
+.search-control {
+    flex: 2;
+    position: relative;
+}
+
+.search-control input {
+    padding-left: 40px;
+}
+
+.search-control i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-text);
+}
+
+/* Voice Feature Styles */
+.voice-container {
+    position: relative;
+}
+
+.voice-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.voice-btn:hover {
+    background-color: var(--primary-light);
+}
+
+.voice-btn.active {
+    color: white;
+    background-color: var(--primary-color);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(63, 81, 181, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(63, 81, 181, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(63, 81, 181, 0); }
+}
+
+.voice-container input,
+.voice-container textarea {
+    padding-right: 50px;
+}
+
+.voice-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.voice-control-btn {
+    background: none;
+    border: 1px solid var(--divider-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.voice-control-btn:hover {
+    background-color: var(--primary-light);
+    border-color: var(--primary-color);
+}
+
+.voice-control-btn i {
+    margin-right: 5px;
+}
+
+.voice-status {
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+.voice-transcript {
+    background-color: #f9f9f9;
+    border: 1px solid var(--divider-color);
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 10px;
+    max-height: 100px;
+    overflow-y: auto;
+    display: none;
+}
+
+.voice-transcript.active {
+    display: block;
+}
+
+.tts-highlight {
+    background-color: var(--primary-light);
+    border-radius: 3px;
+}
+
+/* Responsive adjustments for journal features */
+@media (max-width: 768px) {
+    .mood-option {
+        width: calc(50% - 10px);
+    }
+    
+    .filter-controls {
+        flex-direction: column;
+    }
+    
+    .filter-control, .search-control {
+        width: 100%;
     }
 }
