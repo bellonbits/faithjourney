@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faith Journey.</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/updated_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -20,19 +20,26 @@
                 <button class="tab-btn" data-tab="books">Book Recommendations</button>
                 <button class="tab-btn" data-tab="bible-study">Bible Study</button>
                 <button class="tab-btn" data-tab="questions">Ask a Question</button>
+                <button class="tab-btn" data-tab="journal">Personal Journal</button>
             </div>
 
             <div class="tab-content">
                 <!-- Quiet Time Tab -->
                 <div class="tab-pane active" id="quiet-time">
                     <h2>Daily Quiet Time Plan</h2>
-                    <div class="form-group">
+                    <div class="form-group voice-container">
                         <label for="duration">Duration (minutes):</label>
                         <input type="number" id="duration" min="5" max="60" value="15">
+                        <button class="voice-btn" id="duration-voice" title="Speak duration">
+                            <i class="fas fa-microphone"></i>
+                        </button>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group voice-container">
                         <label for="focus-area">Focus Area (optional):</label>
                         <input type="text" id="focus-area" placeholder="e.g., prayer, gratitude, trust">
+                        <button class="voice-btn" id="focus-area-voice" title="Speak focus area">
+                            <i class="fas fa-microphone"></i>
+                        </button>
                     </div>
                     <button class="submit-btn" id="quiet-time-btn">Generate Plan</button>
                 </div>
@@ -40,9 +47,12 @@
                 <!-- Book Recommendations Tab -->
                 <div class="tab-pane" id="books">
                     <h2>Christian Book Recommendations</h2>
-                    <div class="form-group">
+                    <div class="form-group voice-container">
                         <label for="book-topic">Topic (optional):</label>
                         <input type="text" id="book-topic" placeholder="e.g., prayer, discipleship, evangelism">
+                        <button class="voice-btn" id="book-topic-voice" title="Speak topic">
+                            <i class="fas fa-microphone"></i>
+                        </button>
                     </div>
                     <div class="form-group">
                         <label for="spiritual-level">Spiritual Maturity:</label>
@@ -62,9 +72,12 @@
                 <!-- Bible Study Tab -->
                 <div class="tab-pane" id="bible-study">
                     <h2>Bible Study Guide</h2>
-                    <div class="form-group">
+                    <div class="form-group voice-container">
                         <label for="passage">Bible Passage:</label>
                         <input type="text" id="passage" placeholder="e.g., John 3:16-21, Psalm 23">
+                        <button class="voice-btn" id="passage-voice" title="Speak passage">
+                            <i class="fas fa-microphone"></i>
+                        </button>
                     </div>
                     <button class="submit-btn" id="bible-study-btn">Create Study Guide</button>
                 </div>
@@ -72,11 +85,145 @@
                 <!-- Questions Tab -->
                 <div class="tab-pane" id="questions">
                     <h2>Ask a Faith Question</h2>
-                    <div class="form-group">
+                    <div class="form-group voice-container">
                         <label for="question">Your Question:</label>
                         <textarea id="question" placeholder="e.g., What does the Bible say about forgiveness?"></textarea>
+                        <button class="voice-btn" id="question-voice" title="Speak your question">
+                            <i class="fas fa-microphone"></i>
+                        </button>
                     </div>
                     <button class="submit-btn" id="question-btn">Get Answer</button>
+                </div>
+                
+                <!-- Personal Journal Tab -->
+                <div class="tab-pane" id="journal">
+                    <h2>Personal Journal</h2>
+                    
+                    <!-- Journal Entry Form -->
+                    <div id="journal-form">
+                        <div class="form-group voice-container">
+                            <label for="journal-title">Title:</label>
+                            <input type="text" id="journal-title" placeholder="Give your entry a title">
+                            <button class="voice-btn" id="journal-title-voice" title="Speak your title">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="journal-date">Date:</label>
+                            <input type="date" id="journal-date">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>How are you feeling today?</label>
+                            <div class="mood-selector" id="mood-selector">
+                                <div class="mood-option" data-mood="joyful">
+                                    <i class="fas fa-smile-beam"></i>
+                                    <span>Joyful</span>
+                                </div>
+                                <div class="mood-option" data-mood="peaceful">
+                                    <i class="fas fa-dove"></i>
+                                    <span>Peaceful</span>
+                                </div>
+                                <div class="mood-option" data-mood="anxious">
+                                    <i class="fas fa-wind"></i>
+                                    <span>Anxious</span>
+                                </div>
+                                <div class="mood-option" data-mood="sad">
+                                    <i class="fas fa-cloud-rain"></i>
+                                    <span>Sad</span>
+                                </div>
+                                <div class="mood-option" data-mood="confused">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>Confused</span>
+                                </div>
+                                <div class="mood-option" data-mood="grateful">
+                                    <i class="fas fa-pray"></i>
+                                    <span>Grateful</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group voice-container">
+                            <label for="journal-content">Your Thoughts:</label>
+                            <textarea id="journal-content" placeholder="Share what's on your heart and mind..."></textarea>
+                            <button class="voice-btn" id="journal-content-voice" title="Speak your thoughts">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <div class="voice-transcript" id="journal-transcript"></div>
+                            <div class="voice-controls">
+                                <span class="voice-status" id="journal-voice-status">Click the microphone to start speaking</span>
+                                <button class="voice-control-btn" id="journal-voice-pause" style="display: none;">
+                                    <i class="fas fa-pause"></i> Pause
+                                </button>
+                                <button class="voice-control-btn" id="journal-voice-stop" style="display: none;">
+                                    <i class="fas fa-stop"></i> Stop
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group voice-container">
+                            <label for="journal-prayer">Prayer Requests (optional):</label>
+                            <textarea id="journal-prayer" placeholder="Any prayers you'd like to remember..."></textarea>
+                            <button class="voice-btn" id="journal-prayer-voice" title="Speak your prayer requests">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="form-group voice-container">
+                            <label for="journal-scripture">Scripture Connection (optional):</label>
+                            <input type="text" id="journal-scripture" placeholder="Any verses that spoke to you today">
+                            <button class="voice-btn" id="journal-scripture-voice" title="Speak the scripture">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="form-group voice-container">
+                            <label for="journal-tags">Tags (comma separated):</label>
+                            <input type="text" id="journal-tags" placeholder="e.g., prayer, gratitude, struggle">
+                            <button class="voice-btn" id="journal-tags-voice" title="Speak your tags">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                        </div>
+                        
+                        <button class="submit-btn" id="journal-save-btn">Save Entry</button>
+                    </div>
+                    
+                    <!-- Journal History -->
+                    <div class="journal-entries" id="journal-entries">
+                        <h3>Your Journal History</h3>
+                        
+                        <div class="filter-controls">
+                            <div class="search-control">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="journal-search" placeholder="Search your entries...">
+                            </div>
+                            <div class="filter-control">
+                                <select id="journal-filter-mood">
+                                    <option value="">All Moods</option>
+                                    <option value="joyful">Joyful</option>
+                                    <option value="peaceful">Peaceful</option>
+                                    <option value="anxious">Anxious</option>
+                                    <option value="sad">Sad</option>
+                                    <option value="confused">Confused</option>
+                                    <option value="grateful">Grateful</option>
+                                </select>
+                            </div>
+                            <div class="filter-control">
+                                <select id="journal-filter-date">
+                                    <option value="">All Time</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                    <option value="year">This Year</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div id="journal-entries-list">
+                            <!-- Journal entries will be populated here -->
+                            <p id="no-entries-message">Your journal entries will appear here. Start by creating your first entry above!</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -84,14 +231,21 @@
             <div class="response-container" id="response-container">
                 <div class="response-header">
                     <h3>Your Response</h3>
-                    <button id="copy-btn" title="Copy to clipboard"><i class="fas fa-copy"></i></button>
+                    <div style="display: flex; align-items: center;">
+                        <button id="speak-response-btn" title="Listen to response">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                        <button id="copy-btn" title="Copy to clipboard">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="response-content" id="response-content">
                     <div class="welcome-message">
                         <i class="fas fa-pray fa-3x"></i>
                         <h3>Welcome to your Church AI Assistant</h3>
                         <p>Select a feature above to get started on your spiritual journey.</p>
-                        <p>I'm here to help with quiet time plans, book recommendations, Bible studies, and answering your questions about faith.</p>
+                        <p>I'm here to help with quiet time plans, book recommendations, Bible studies, answering your questions about faith, and now you can keep a personal journal!</p>
                     </div>
                 </div>
                 <div class="loading" id="loading">
