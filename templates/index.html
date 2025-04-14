@@ -999,7 +999,7 @@
         // Tab switching functionality
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabPanes = document.querySelectorAll('.tab-pane');
-        const apiBaseUrl = 'http://localhost:8001'; // Change this if your API is on a different host/port
+        const apiBaseUrl = window.location.origin; 
 
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
