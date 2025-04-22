@@ -688,6 +688,131 @@
             background-color: rgba(255, 209, 102, 0.3);
             border-radius: 3px;
         }
+
+        /* Podcast section styles */
+        .podcast-container {
+            margin-bottom: 30px;
+        }
+        
+        .podcast-description {
+            margin-bottom: 25px;
+            color: #667085;
+        }
+        
+        .podcast-episodes {
+            margin-top: 30px;
+        }
+        
+        .podcast-episode {
+            background-color: #f9fafc;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .podcast-episode:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .podcast-episode h4 {
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .podcast-episode p {
+            font-size: 0.9rem;
+            color: #667085;
+            margin-bottom: 10px;
+        }
+        
+        .episode-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            header {
+                padding: 20px 0;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                padding: 0;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid #e1e5ea;
+            }
+            
+            .tab-btn.active:before {
+                width: 5px;
+                height: 80%;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            
+            .tab-content {
+                padding: 25px 20px;
+            }
+            
+            .submit-btn {
+                width: 100%;
+            }
+        }
+
+        /* Feature boxes for the welcome message */
+        .feature-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-box {
+            flex: 1;
+            min-width: 200px;
+            background-color: #f9fafc;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-box i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .feature-box h4 {
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .feature-box p {
+            font-size: 0.9rem;
+            color: #667085;
+        }
     </style>
 </head>
 <body>
@@ -711,6 +836,9 @@
                 </button>
                 <button class="tab-btn" data-tab="questions">
                     <i class="fas fa-question-circle"></i> Ask a Question
+                </button>
+                <button class="tab-btn" data-tab="podcast">
+                    <i class="fas fa-podcast"></i> Podcasts
                 </button>
                 <button class="tab-btn" data-tab="journal">
                     <i class="fas fa-pen-to-square"></i> Personal Journal
@@ -792,6 +920,48 @@
                     <button class="submit-btn" id="question-btn">
                         <i class="fas fa-comment-dots"></i> Get Answer
                     </button>
+                </div>
+
+                <!-- Podcast Tab -->
+                <div class="tab-pane" id="podcast">
+                    <h2>Faith Podcasts</h2>
+                    <div class="podcast-description">
+                        <p>Listen to uplifting and insightful messages from our church leaders and special guests. New episodes released weekly!</p>
+                    </div>
+                    <div class="podcast-container">
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/7AKgOx5WDvyQnxvtwUhzjL?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/69GmVwGcxczNWfy6HITTsy?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/19rL5zOXUtSxbs3bfFx3bJ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/1MAtTjRZczQrXur495Qt20?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/6yl7hK1wS9e9IQdUOXyZGL?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                    <h3 style="margin-top: 30px; font-family: 'Montserrat', sans-serif;">Recent Episodes</h3>
+                    <div class="podcast-episodes">
+                        <div class="podcast-episode">
+                            <h4>Finding Peace in Chaotic Times</h4>
+                            <p>Pastor Mark shares practical ways to experience God's peace even when life feels overwhelming.</p>
+                            <div class="episode-meta">
+                                <span><i class="far fa-calendar-alt"></i> April 15, 2025</span>
+                                <span><i class="far fa-clock"></i> 28 minutes</span>
+                            </div>
+                        </div>
+                        <div class="podcast-episode">
+                            <h4>The Power of Community</h4>
+                            <p>Why fellowship matters and how to build meaningful relationships within the church family.</p>
+                            <div class="episode-meta">
+                                <span><i class="far fa-calendar-alt"></i> April 8, 2025</span>
+                                <span><i class="far fa-clock"></i> 35 minutes</span>
+                            </div>
+                        </div>
+                        <div class="podcast-episode">
+                            <h4>Faith That Moves Mountains</h4>
+                            <p>An inspiring message about trusting God when facing impossible situations.</p>
+                            <div class="episode-meta">
+                                <span><i class="far fa-calendar-alt"></i> April 1, 2025</span>
+                                <span><i class="far fa-clock"></i> 32 minutes</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Personal Journal Tab -->
@@ -968,6 +1138,11 @@
                                 <i class="fas fa-question-circle"></i>
                                 <h4>Faith Questions</h4>
                                 <p>Get thoughtful answers to your biggest questions about God and faith.</p>
+                            </div>
+                            <div class="feature-box">
+                                <i class="fas fa-podcast"></i>
+                                <h4>Podcasts</h4>
+                                <p>Listen to inspiring messages wherever you are on your faith journey.</p>
                             </div>
                             <div class="feature-box">
                                 <i class="fas fa-pen-to-square"></i>
