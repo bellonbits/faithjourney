@@ -9,7 +9,7 @@ from pydantic import BaseModel
 import uvicorn
 
 # API Configuration
-GROQ_API_KEY = "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"
+GROQ_API_KEY = "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"
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = "llama3-70b-8192"
 
