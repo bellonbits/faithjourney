@@ -5,3 +5,4 @@ jinja2
 pydantic
 python-multipart
 aiofiles
+python-dotenv
