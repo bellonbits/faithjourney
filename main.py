@@ -7,11 +7,14 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import uvicorn
+import os
+from dotenv import load_dotenv
 
-# API Configuration
-GROQ_API_KEY = "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"
-GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
-GROQ_MODEL = "moonshotai/kimi-k2-instruct-0905"
+load_dotenv()  # read .env file
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_MODEL = os.getenv("GROQ_MODEL")
+GROQ_API_URL = os.getenv("GROQ_API_URL")
 
 app = FastAPI(title="Church AI Assistant")
 
